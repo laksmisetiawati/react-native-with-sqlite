@@ -18,6 +18,8 @@ import {
     Grid
 } from "react-native-easy-grid";
 
+import DatePicker from 'react-native-datepicker';
+
 import db from '../configs/database';
 
 import gs from '../assets/stylesheets/global';
@@ -29,6 +31,7 @@ class DataEntryNextScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            dob: "1000/01/01",
             isLoading: true,
             occupationClass: '',
             industrySector: '',
@@ -38,7 +41,7 @@ class DataEntryNextScreen extends Component {
             paymentFrequency: '',
             formBeneficiary: [],
             fullName: '',
-            dob: '',
+            // dob: '',
             gender: '',
             relationship: '',
             percentage: ''
@@ -57,7 +60,7 @@ class DataEntryNextScreen extends Component {
 
     handleFormSubmission = () => this.props.navigation.navigate('ECertificate');
         
-    async componentDidMount() {
+    async componentWillMount() {
         // await this.setState({
         //     formBeneficiary: [
         //         {
@@ -136,301 +139,315 @@ class DataEntryNextScreen extends Component {
         const formBeneficiary = this.state.formBeneficiary;
 
         return (
-            <ScrollView style={[gs.flex1]}>
-                <View style={[gs.body]}>
-                    <View style={[gs.container]}>
+            <ScrollView style={[ gs.body, gs.flex1 ]}>
+                <View style={[ gs.container ]}>
 
-                        <View style={{ marginTop: 30}}>
-                            <Text style={{ fontSize: 20 }}>
-                                Insurance Data
-                            </Text>
-                        </View>
-                        <View style={[eds.entryDataDetail]}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <View style={{ width: '20%' }}>
-                                    <Text style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>Occupation Class</Text>
-                                    <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Industry Sector</Text>
-                                    <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Annual Income</Text>
-                                    <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Other Income</Text>
-                                    <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Premium</Text>
-                                    <Text style={{ fontSize: 15, marginTop:18 }}>Payment Frequecy</Text>
-                                </View>
-                                <View style={{ width: '80%' }}>
-                                    <View style={{ fontSize: 15, marginBottom:5 }}>
-                                        <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
-                                            <Picker selectedValue={ this.state.occupationClass }
-                                                style={[ gs.dropDown]}
-                                                onValueChange={(itemValue, itemIndex) => this.setState({occupationClass: itemValue})}
-                                            >
-                                                <Picker.Item label="Please Choose" value="0" />
-                                                <Picker.Item label="Low Risk" value="Low Risk" />
-                                            </Picker>
-                                        </View>
-                                    </View>
-                                    <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
-                                        <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
-                                            <Picker selectedValue={ this.state.industrySector }
-                                                style={[ gs.dropDown]}
-                                                onValueChange={(industrySector) => this.setState({industrySector: industrySector})}
-                                            >
-                                                <Picker.Item label="Please Choose" value="0" />
-                                                <Picker.Item label="Pertanian" value="Pertanian" />
-                                            </Picker>
-                                        </View>
-                                    </View>
-                                    <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
-                                        <TextInput style={[
-                                                gs.inputText
-                                            ]}
-                                            onChangeText={(annualIncome) => this.setState({annualIncome: annualIncome})}/>
-                                    </View>
-                                    <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
-                                        <TextInput
-                                            style={[
-                                                gs.inputText
-                                            ]}
-                                            onChangeText={(otherIncome) => this.setState({otherIncome: otherIncome})}/>
-                                    </View>
-                                    <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
-                                        <TextInput
-                                            style={[
-                                                gs.inputText
-                                            ]} editable={false} defaultValue="75.000"
-                                            onChangeText={(premium) => this.setState({premium: premium})}/>
-                                    </View>
-                                    <View style={{ fontSize: 15, marginTop:5 }}>
-                                        <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
-                                            <Picker selectedValue={ this.state.paymentFrequency }
-                                                style={[ gs.dropDown]}
-                                                onValueChange={(paymentFrequency) => this.setState({paymentFrequency: paymentFrequency})}
-                                            >
-                                                <Picker.Item label="Please Choose" value="0" />
-                                                <Picker.Item label="Monthly" value="Monthly" />
-                                                <Picker.Item label="Yearly" value="Yearly" />
-                                            </Picker>
-                                        </View>
-                                    </View>
-                                </View> 
+                    <View style={{ marginTop: 30}}>
+                        <Text style={{ fontSize: 20 }}>
+                            Insurance Data
+                        </Text>
+                    </View>
+                    <View style={[eds.entryDataDetail]}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ width: '30%' }}>
+                                <Text style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>Occupation Class</Text>
+                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Industry Sector</Text>
+                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Annual Income</Text>
+                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Other Income</Text>
+                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Premium</Text>
+                                <Text style={{ fontSize: 15, marginTop:18 }}>Payment Frequecy</Text>
                             </View>
-                        </View>
-
-                        <View style={{ marginTop: 30}}>
-                            <Text style={[ ecs.header1]}>
-                                Beneficiary Detail
-                            </Text>
-                        </View>
-                        <View style={{ marginLeft:'2%', width:'95%' }}>
-                            <Grid>
-                                <Col style={[gs.tableHeader]}>
-                                    <Text style={[gs.textCenter]}>No</Text>
-                                </Col>
-                                <Col style={[gs.tableHeader]}>
-                                    <Text style={[gs.textCenter]}>Name</Text>
-                                </Col>
-                                <Col style={[gs.tableHeader]}>
-                                    <Text style={[gs.textCenter]}>Relationship</Text>
-                                </Col>
-                                <Col style={[gs.tableHeader]}>
-                                    <Text style={[gs.textCenter]}>Percentage</Text>
-                                </Col>
-                                <Col style={[gs.tableHeader]}>
-                                    <Text style={[gs.textCenter]}>&nbsp;</Text>
-                                </Col>
-                            </Grid>
-                            {
-                                formBeneficiary.map((row, index) => {
-                                    return (
-                                        <Grid key={index}>
-                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                <Text style={[gs.textCenter]}>{ index+1} </Text>
-                                            </Col>
-                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                <Text style={[gs.textCenter]}>{ row.fullName }</Text>
-                                            </Col>
-                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                <Text style={[gs.textCenter]}>{ row.relationship }</Text>
-                                            </Col>
-                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                <Text style={[gs.textCenter]}>{ row.percentage }%</Text>
-                                            </Col>
-                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
-
-                                                <TextInput style={{ 
-                                                        overflow: 'hidden', 
-                                                        position: 'absolute', 
-                                                        top: -1000
-                                                    }} editable={false} defaultValue={ row.key } />
-                                                <TextInput style={{ 
-                                                        overflow: 'hidden', 
-                                                        position: 'absolute', 
-                                                        top: -1000
-                                                    }} editable={false} defaultValue={ row.name } />
-                                                <TextInput style={{ 
-                                                        overflow: 'hidden', 
-                                                        position: 'absolute', 
-                                                        top: -1000
-                                                    }} editable={false} defaultValue={ row.gender } />
-                                                <TextInput style={{ 
-                                                        overflow: 'hidden', 
-                                                        position: 'absolute', 
-                                                        top: -1000
-                                                    }} editable={false} defaultValue={ row.dob } />
-                                                <TextInput style={{ 
-                                                        overflow: 'hidden', 
-                                                        position: 'absolute', 
-                                                        top: -1000
-                                                    }} editable={false} defaultValue={ row.relationship } />
-                                                <TextInput style={{ 
-                                                        overflow: 'hidden', 
-                                                        position: 'absolute', 
-                                                        top: -1000
-                                                    }} editable={false} defaultValue={ row.percentage } />
-
-                                                <TouchableOpacity
-                                                    style={[
-                                                        gs.btn
-                                                    ]}
-                                                    onPress={ this.onPressSimulateScreen }>
-                                                    <View>
-                                                        <Text style={[gs.textCenter]}>Edit</Text>
-                                                    </View>
-                                                </TouchableOpacity>
-                                                <TouchableOpacity
-                                                    style={[
-                                                        gs.btn
-                                                    ]}
-                                                    onPress={ (e) => this.removeForm(row.key) }>
-                                                    <View>
-                                                        <Text style={[gs.textCenter]}>Delete</Text>
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </Col>
-                                        </Grid>
-                                    )
-                                })
-                            }
-                        </View>
-
-                        <View style={{ marginTop: 40, marginBottom: 50, flexDirection: 'row' }}>
-                            <View style={{ width: '20%' }}>
-                                <Text style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>Full Name</Text>
-                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Date of Birth</Text>
-                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Gender</Text>
-                                <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Relationship</Text>
-                                <Text style={{ fontSize: 15, marginTop:18 }}>Percentage</Text>
-                            </View>
-
-                            <View style={{ width: '80%' }}>
+                            <View style={{ width: '70%' }}>
                                 <View style={{ fontSize: 15, marginBottom:5 }}>
-                                    <TextInput style={[
-                                            gs.inputText
-                                        ]}
-                                        onChangeText={(fullName) => this.setState({fullName: fullName})}/>
-                                </View>
-                                <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
-                                    <TextInput style={[
-                                            gs.inputText
-                                        ]}
-                                        onChangeText={(dob) => this.setState({dob: dob})}/>
-                                </View>
-                                <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
                                     <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
-                                        <Picker selectedValue={ this.state.gender }
+                                        <Picker selectedValue={ this.state.occupationClass }
                                             style={[ gs.dropDown]}
-                                            onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}
+                                            onValueChange={(itemValue, itemIndex) => this.setState({occupationClass: itemValue})}
                                         >
                                             <Picker.Item label="Please Choose" value="0" />
-                                            <Picker.Item label="Male" value="Male" />
-                                            <Picker.Item label="Woman" value="Woman" />
+                                            <Picker.Item label="Low Risk" value="Low Risk" />
                                         </Picker>
                                     </View>
                                 </View>
                                 <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
-                                    <TextInput
-                                        style={[
+                                    <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
+                                        <Picker selectedValue={ this.state.industrySector }
+                                            style={[ gs.dropDown]}
+                                            onValueChange={(industrySector) => this.setState({industrySector: industrySector})}
+                                        >
+                                            <Picker.Item label="Please Choose" value="0" />
+                                            <Picker.Item label="Pertanian" value="Pertanian" />
+                                        </Picker>
+                                    </View>
+                                </View>
+                                <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
+                                    <TextInput style={[
                                             gs.inputText
                                         ]}
-                                        onChangeText={(relationship) => this.setState({relationship: relationship})}/>
+                                        onChangeText={(annualIncome) => this.setState({annualIncome: annualIncome})}/>
                                 </View>
                                 <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
                                     <TextInput
                                         style={[
                                             gs.inputText
                                         ]}
-                                        onChangeText={(percentage) => this.onNumValidation(percentage)}/>
+                                        onChangeText={(otherIncome) => this.setState({otherIncome: otherIncome})}/>
                                 </View>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ width: '80%'}}></View>
-                                    <TouchableOpacity
+                                <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
+                                    <TextInput
                                         style={[
-                                            gs.btn,
-                                            eds.entryDataDetailBtn
-                                        ]}
-                                        onPress={ this.addNewForm }>
-                                        <View>
-                                            <Text style={[eds.entryDataBtnText]}>Add</Text>
-                                        </View>
-                                    </TouchableOpacity>
+                                            gs.inputText
+                                        ]} editable={false} defaultValue="75.000"
+                                        onChangeText={(premium) => this.setState({premium: premium})}/>
+                                </View>
+                                <View style={{ fontSize: 15, marginTop:5 }}>
+                                    <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
+                                        <Picker selectedValue={ this.state.paymentFrequency }
+                                            style={[ gs.dropDown]}
+                                            onValueChange={(paymentFrequency) => this.setState({paymentFrequency: paymentFrequency})}
+                                        >
+                                            <Picker.Item label="Please Choose" value="0" />
+                                            <Picker.Item label="Monthly" value="Monthly" />
+                                            <Picker.Item label="Yearly" value="Yearly" />
+                                        </Picker>
+                                    </View>
                                 </View>
                             </View> 
                         </View>
+                    </View>
 
-                        <View style={{
-                            borderTopWidth: 3,
-                            borderColor: '#333333',
-                            paddingTop: 15,
-                            paddingBottom: 30,
-                            marginBottom: 30,
-                        }}>
+                    <View style={{ marginTop: 30}}>
+                        <Text style={[ ecs.header1]}>
+                            Beneficiary Detail
+                        </Text>
+                    </View>
+                    <View style={{ marginLeft:'2%', width:'95%' }}>
+                        <Grid>
+                            <Col style={[gs.tableHeader]}>
+                                <Text style={[gs.textCenter]}>No</Text>
+                            </Col>
+                            <Col style={[gs.tableHeader]}>
+                                <Text style={[gs.textCenter]}>Name</Text>
+                            </Col>
+                            <Col style={[gs.tableHeader]}>
+                                <Text style={[gs.textCenter]}>Relationship</Text>
+                            </Col>
+                            <Col style={[gs.tableHeader]}>
+                                <Text style={[gs.textCenter]}>Percentage</Text>
+                            </Col>
+                            <Col style={[gs.tableHeader]}>
+                                <Text style={[gs.textCenter]}>&nbsp;</Text>
+                            </Col>
+                        </Grid>
+                        {
+                            formBeneficiary.map((row, index) => {
+                                return (
+                                    <Grid key={index}>
+                                        <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                            <Text style={[gs.textCenter]}>{ index+1} </Text>
+                                        </Col>
+                                        <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                            <Text style={[gs.textCenter]}>{ row.fullName }</Text>
+                                        </Col>
+                                        <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                            <Text style={[gs.textCenter]}>{ row.relationship }</Text>
+                                        </Col>
+                                        <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                            <Text style={[gs.textCenter]}>{ row.percentage }%</Text>
+                                        </Col>
+                                        <Col style={[gs.tableBody, gs.tableEvenClass]}>
+
+                                            <TextInput style={{ 
+                                                    overflow: 'hidden', 
+                                                    position: 'absolute', 
+                                                    top: -1000
+                                                }} editable={false} defaultValue={ row.key } />
+                                            <TextInput style={{ 
+                                                    overflow: 'hidden', 
+                                                    position: 'absolute', 
+                                                    top: -1000
+                                                }} editable={false} defaultValue={ row.name } />
+                                            <TextInput style={{ 
+                                                    overflow: 'hidden', 
+                                                    position: 'absolute', 
+                                                    top: -1000
+                                                }} editable={false} defaultValue={ row.gender } />
+                                            <TextInput style={{ 
+                                                    overflow: 'hidden', 
+                                                    position: 'absolute', 
+                                                    top: -1000
+                                                }} editable={false} defaultValue={ row.dob } />
+                                            <TextInput style={{ 
+                                                    overflow: 'hidden', 
+                                                    position: 'absolute', 
+                                                    top: -1000
+                                                }} editable={false} defaultValue={ row.relationship } />
+                                            <TextInput style={{ 
+                                                    overflow: 'hidden', 
+                                                    position: 'absolute', 
+                                                    top: -1000
+                                                }} editable={false} defaultValue={ row.percentage } />
+
+                                            <TouchableOpacity
+                                                style={[
+                                                    gs.btn
+                                                ]}
+                                                onPress={ this.onPressSimulateScreen }>
+                                                <View>
+                                                    <Text style={[gs.textCenter]}>Edit</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                            <TouchableOpacity
+                                                style={[
+                                                    gs.btn
+                                                ]}
+                                                onPress={ (e) => this.removeForm(row.key) }>
+                                                <View>
+                                                    <Text style={[gs.textCenter]}>Delete</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </Col>
+                                    </Grid>
+                                )
+                            })
+                        }
+                    </View>
+
+                    <View style={{ marginTop: 40, marginBottom: 50, flexDirection: 'row' }}>
+                        <View style={{ width: '30%' }}>
+                            <Text style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>Full Name</Text>
+                            <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Date of Birth</Text>
+                            <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Gender</Text>
+                            <Text style={{ fontSize: 15, marginTop:18, marginBottom:5 }}>Relationship</Text>
+                            <Text style={{ fontSize: 15, marginTop:18 }}>Percentage</Text>
+                        </View>
+
+                        <View style={{ width: '70%' }}>
+                            <View style={{ fontSize: 15, marginBottom:5 }}>
+                                <TextInput style={[
+                                        gs.inputText
+                                    ]}
+                                    onChangeText={(fullName) => this.setState({fullName: fullName})}/>
+                            </View>
+                            <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
+                                <DatePicker
+                                    style={{ width: '100%' }}
+                                    date={ this.state.dob }
+                                    androidMode="spinner"
+                                    mode="date"
+                                    placeholder="select date"
+                                    format="YYYY/MM/DD"
+                                    minDate="2016/05/01"
+                                    maxDate="2016/06/01"
+                                    confirmBtnText="Confirm"
+                                    cancelBtnText="Cancel"
+                                    customStyles={{
+                                        dateInput: {
+                                            borderWidth: 3,
+                                            borderColor: '#000000'
+                                        }
+                                        // ... You can check the source to find the other keys.
+                                    }}
+                                    onDateChange={(date) => {this.setState({dob: date})}}
+                                />
+                            </View>
+                            <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
+                                <View style={[ gs.wrapAddFormDropDown, eds.wrapAddFormDropDown]}>
+                                    <Picker selectedValue={ this.state.gender }
+                                        style={[ gs.dropDown]}
+                                        onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}
+                                    >
+                                        <Picker.Item label="Please Choose" value="0" />
+                                        <Picker.Item label="Male" value="Male" />
+                                        <Picker.Item label="Woman" value="Woman" />
+                                    </Picker>
+                                </View>
+                            </View>
+                            <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
+                                <TextInput
+                                    style={[
+                                        gs.inputText
+                                    ]}
+                                    onChangeText={(relationship) => this.setState({relationship: relationship})}/>
+                            </View>
+                            <View style={{ fontSize: 15, marginTop:5, marginBottom:5 }}>
+                                <TextInput
+                                    style={[
+                                        gs.inputText
+                                    ]}
+                                    onChangeText={(percentage) => this.onNumValidation(percentage)}/>
+                            </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <View style={{ width: '46%'}}></View>
+                                <View style={{ width: '80%'}}></View>
                                 <TouchableOpacity
                                     style={[
                                         gs.btn,
                                         eds.entryDataDetailBtn
                                     ]}
-                                    onPress={this.onPressSimulateScreen}>
+                                    onPress={ this.addNewForm }>
                                     <View>
-                                        <Text style={[eds.entryDataBtnText]}>Cancel</Text>
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    style={[
-                                        gs.btn,
-                                        eds.entryDataDetailBtn
-                                    ]}
-                                    onPress={this.onPressDashboardScreen}>
-                                    <View>
-                                        <Text style={[eds.entryDataBtnText]}>Save as Draft</Text>
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    style={[
-                                        gs.btn,
-                                        eds.entryDataDetailBtn
-                                    ]}
-                                    onPress={ () => {
-                                        this.props.navigation.navigate('ECertificate', {
-                                            occupationClass: this.state.occupationClass,
-                                            industrySector: this.state.industrySector,
-                                            annualIncome: this.state.annualIncome,
-                                            otherIncome: this.state.otherIncome,
-                                            paymentFrequency: this.state.paymentFrequency,
-                                            formBeneficiary: this.state.formBeneficiary,
-                                            healthy: healthy,
-                                            reason: reason,
-                                            nasabahId: nasabahId,
-                                            product: product
-                                        });
-                                    } }>
-                                    <View>
-                                        <Text style={[eds.entryDataBtnText]}>Next</Text>
+                                        <Text style={[eds.entryDataBtnText]}>Add</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
-                        </View>
-
+                        </View> 
                     </View>
+
+                    <View style={{
+                        borderTopWidth: 3,
+                        borderColor: '#333333',
+                        paddingTop: 15,
+                        paddingBottom: 30,
+                        marginBottom: 30,
+                    }}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ width: '46%'}}></View>
+                            <TouchableOpacity
+                                style={[
+                                    gs.btn,
+                                    eds.entryDataDetailBtn
+                                ]}
+                                onPress={this.onPressSimulateScreen}>
+                                <View>
+                                    <Text style={[eds.entryDataBtnText]}>Cancel</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[
+                                    gs.btn,
+                                    eds.entryDataDetailBtn
+                                ]}
+                                onPress={this.onPressDashboardScreen}>
+                                <View>
+                                    <Text style={[eds.entryDataBtnText]}>Save as Draft</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[
+                                    gs.btn,
+                                    eds.entryDataDetailBtn
+                                ]}
+                                onPress={ () => {
+                                    this.props.navigation.navigate('ECertificate', {
+                                        occupationClass: this.state.occupationClass,
+                                        industrySector: this.state.industrySector,
+                                        annualIncome: this.state.annualIncome,
+                                        otherIncome: this.state.otherIncome,
+                                        paymentFrequency: this.state.paymentFrequency,
+                                        formBeneficiary: this.state.formBeneficiary,
+                                        healthy: healthy,
+                                        reason: reason,
+                                        nasabahId: nasabahId,
+                                        product: product
+                                    });
+                                } }>
+                                <View>
+                                    <Text style={[eds.entryDataBtnText]}>Next</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
                 </View>
             </ScrollView>
         )

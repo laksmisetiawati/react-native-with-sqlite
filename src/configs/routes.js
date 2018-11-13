@@ -27,6 +27,7 @@ import SimulateScreen from '../screens/SimulateScreen';
 import DataEntryScreen from '../screens/DataEntryScreen';
 import DataEntryNextScreen from '../screens/DataEntryNextScreen';
 import ECertificateScreen from '../screens/ECertificateScreen';
+import ProcessDraftScreen from '../screens/ProcessDraftScreen';
 
 const Routes = createStackNavigator({
   // Login: { screen: LoginScreen },
@@ -34,7 +35,8 @@ const Routes = createStackNavigator({
   Simulate: { screen: SimulateScreen },
   DataEntry: { screen: DataEntryScreen },
   DataEntryNext: { screen: DataEntryNextScreen },
-  ECertificate: { screen: ECertificateScreen}
+  ECertificate: { screen: ECertificateScreen },
+  ProcessDraft: { screen: ProcessDraftScreen }
 });
 
 const RouteStack = createSwitchNavigator({

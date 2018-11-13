@@ -34,10 +34,9 @@ export default StyleSheet.create({
 	inputText: {
 		borderWidth: 3,
 		borderColor: '#000000',
-		marginBottom: 3,
-		marginTop: 3,
-		marginLeft: 3,
-		marginRight: 3,
+		// marginBottom: 3,
+		// marginTop: 3,
+		// marginRight: 3,
 		paddingLeft: 15,
 		paddingRight: 15,
 		paddingTop: 1,

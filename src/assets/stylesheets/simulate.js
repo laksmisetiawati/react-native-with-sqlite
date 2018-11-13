@@ -60,8 +60,7 @@ export default StyleSheet.create({
 		marginLeft: '10%',
 		marginRight: '10%'
 	},
-
-
+	
 	addFormBtnText: {
 		textAlign: 'center',
 		lineHeight: 25
@@ -71,9 +70,11 @@ export default StyleSheet.create({
 		marginLeft: '1%',
 		width: '39.5%'
 	},
-	inputTextSimulate: {
+	inputText: {
 		width: '60%',
-		marginRight: '1%'
+		marginRight: 3,
+		marginBottom: 3,
+		marginTop: 3
 	},
 	simulasionResult: {
 		borderTopWidth: 3,

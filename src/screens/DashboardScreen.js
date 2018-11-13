@@ -34,11 +34,12 @@ class DashboardScreen extends Component {
         this.state = {
             products: [],
             selected: '',
-            insuraces: []
+            insuraces: [],
+            draft: false
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         // persipan data
         // await db.transaction((tx) => {
         //     tx.executeSql(
@@ -173,6 +174,9 @@ class DashboardScreen extends Component {
                 }
             )
         })
+        // const product = navigation.getParam('product', 0);
+        // const healthy = navigation.getParam('healthy', null);
+        // const reason = navigation.getParam('reason', null);
     }
 
 	static navigationOptions = {
@@ -214,6 +218,28 @@ class DashboardScreen extends Component {
         const insuraces = this.state.insuraces;
 
         console.log(this.state.beneficiaries);
+
+
+        // const { nav } = this.props;
+        // const draft = nav.getParam('draft', false);
+        // if(draft === true) {
+        //     console.log("drft TRUE");
+        //     const nasabahId = nav.getParam('nasabahId', 0);
+        //     await db.transaction((tx) => {
+        //         tx.executeSql(
+        //             "SELECT * FROM nasabah WHERE id=?", 
+        //             [nasabahId],
+        //             (tx, results) => {
+        //                 const row  = results.rows.item(0);
+        //                 this.setState({
+        //                     getNasabah : row
+        //                 })
+        //             }
+        //         )
+        //     })
+        // } else {
+        //     console.log("drft FALSE");
+        // }
 
         return (
             <ScrollView style={[ gs.body, gs.flex1 ]}>

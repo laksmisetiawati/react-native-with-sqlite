@@ -35,15 +35,7 @@ class SimulateScreen extends Component {
         }
     }
 
-    async componentDidMount() {
-        // const currentDate = new Date();
-        // var dd = currentDate.getDate();
-        // var mm = currentDate.getMonth()+1;
-        // var yyyy = currentDate.getFullYear();
-        // this.setState({
-        //     date: yyyy + "/" + mm + "/" + dd
-        // });
-
+    async componentWillMount() {
         const { navigation } = this.props;
         const product = navigation.getParam('product', null);
 
@@ -87,7 +79,7 @@ class SimulateScreen extends Component {
                                 placeholder="Name"
                                 style={[
                                     gs.inputText,
-                                    ss.inputTextSimulate
+                                    ss.inputText
                                 ]} />
                             <DatePicker
                                 style={{ width: '40%', marginTop: 3, marginLeft: 6 }}
@@ -116,7 +108,7 @@ class SimulateScreen extends Component {
                                 placeholder="Nilai UP"
                                 style={[
                                     gs.inputText,
-                                    ss.inputTextSimulate
+                                    ss.inputText
                                 ]} />
                             <TouchableOpacity
                                 style={[

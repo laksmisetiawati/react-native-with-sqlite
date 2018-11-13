@@ -32,7 +32,7 @@ class ECertificateScreen extends Component {
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         const { navigation } = this.props;
         const occupationClass = navigation.getParam('occupationClass', null);
         const industrySector = navigation.getParam('industrySector', null);
@@ -108,7 +108,7 @@ class ECertificateScreen extends Component {
             )
         })
 
-        if(formBeneficiary) {
+        // if(formBeneficiary) {
             for(x=0; x<=formBeneficiary.length; x++){
                 await db.transaction((tx) => {
                     tx.executeSql(
@@ -139,7 +139,7 @@ class ECertificateScreen extends Component {
                     }
                 )
             })
-        }
+        // }
     }
 
     static navigationOptions = {
@@ -154,243 +154,241 @@ class ECertificateScreen extends Component {
         const getBeneficiaries = this.state.getBeneficiaries;
 
         return (
-            <ScrollView style={[gs.flex1]}>
-                <View style={[gs.body]}>
-                    <View style={[gs.container]}>
+            <ScrollView style={[ gs.body, gs.flex1 ]}>
+                <View style={[ gs.container ]}>
 
-                        <View style={{ marginTop: 30}}>
-                            <View style={[ecs.certificate]}>
-
-                                <View style={{ marginBottom: 20 }}>
-                                    <Text style={{ fontSize: 25, textAlign: 'center' }}>
-                                        Certificate
-                                    </Text>
-                                </View>
-
-                                <View>
-                                    <Text style={[ ecs.header1]}>
-                                        Certificate Holder
-                                    </Text>
-                                </View>
-
-                                <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ width: '25%' }}>
-                                        <Text style={{
-                                            fontSize: 15,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Name
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Date of Birth
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Identity No
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Certificate No
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Product Name
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15
-                                        }}>
-                                            Submit Date
-                                        </Text>
-                                    </View>
-                                    <View style={{ width: '70%'}}>
-                                        <Text style={{
-                                            fontSize: 15,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.holder_name }
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.holder_dob }
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.holder_identity_no }
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.certificate_no }
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.product_name }
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15
-                                        }}>
-                                            { getInsurace.submit_date }
-                                        </Text>
-                                    </View> 
-                                </View>
-
-                                <View style={{ marginTop:40 }}>
-                                    <Text style={[ ecs.header1]}>
-                                        Insured Person
-                                    </Text>
-                                </View>
-
-                                <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ width: '25%' }}>
-                                        <Text style={{
-                                            fontSize: 15,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Name
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            Date of Birth
-                                        </Text>
-                                    </View>
-                                    <View style={{ width: '70%'}}>
-                                        <Text style={{
-                                            fontSize: 15,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.holder_dob }
-                                        </Text>
-                                        <Text style={{ 
-                                            fontSize: 15, 
-                                            marginTop:5,
-                                            marginLeft:15,
-                                            marginBottom:5
-                                        }}>
-                                            { getInsurace.holder_name }
-                                        </Text>
-                                    </View> 
-                                </View>
-
-                                <View style={{ marginTop:40 }}>
-                                    <Text style={[ ecs.header1 ]}>
-                                        Beneficiary
-                                    </Text>
-                                </View>
-                                <View style={{ marginLeft:'2%', width:'95%' }}>
-                                    <Grid>
-                                        <Col style={[gs.tableHeader]}>
-                                            <Text style={[gs.textCenter]}>No</Text>
-                                        </Col>
-                                        <Col style={[gs.tableHeader]}>
-                                            <Text style={[gs.textCenter]}>Name</Text>
-                                        </Col>
-                                        <Col style={[gs.tableHeader]}>
-                                            <Text style={[gs.textCenter]}>Relationship</Text>
-                                        </Col>
-                                        <Col style={[gs.tableHeader]}>
-                                            <Text style={[gs.textCenter]}>Percentage</Text>
-                                        </Col>
-                                    </Grid>
-                
-                                    {
-                                        getBeneficiaries.map((row, i) => {
-                                            <Grid>
-                                                <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                    <Text style={[gs.textCenter]}>{ i }</Text>
-                                                </Col>
-                                                <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                    <Text style={[gs.textCenter]}>{ row.fullName }</Text>
-                                                </Col>
-                                                <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                    <Text style={[gs.textCenter]}>{ row.relationship }</Text>
-                                                </Col>
-                                                <Col style={[gs.tableBody, gs.tableEvenClass]}>
-                                                    <Text style={[gs.textCenter]}>{ row.percentage }%</Text>
-                                                </Col>
-                                            </Grid>
-                                        })
-                                    }
-                                </View>
-
-                            </View>
-                        </View>
-
-                        <View style={{ marginTop: 30}}>
-                            <Text style={{ fontSize: 20 }}>
-                                Benefit
-                            </Text>
-                        </View>
-
+                    <View style={{ marginTop: 30}}>
                         <View style={[ecs.certificate]}>
-                            <View style={{ marginBottom: 30 }}>
-                                <Text style={{
-                                    fontSize: 15,
-                                    marginBottom:5
-                                }}>
-                                    - Uang pertanggungan Rp. 45.000.000
+
+                            <View style={{ marginBottom: 20 }}>
+                                <Text style={{ fontSize: 25, textAlign: 'center' }}>
+                                    Certificate
+                                </Text>
+                            </View>
+
+                            <View>
+                                <Text style={[ ecs.header1]}>
+                                    Certificate Holder
                                 </Text>
                             </View>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <View style={{ width: '82%'}}></View>
-                                <TouchableOpacity
-                                    style={[
-                                        gs.btn,
-                                        ecs.certificateBtn
-                                    ]}
-                                    onPress={this.onPressDashboardScreen}>
-                                    <View>
-                                        <Text style={[ecs.entryDataBtnText]}>Back</Text>
-                                    </View>
-                                </TouchableOpacity>
+                                <View style={{ width: '25%' }}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Name
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Date of Birth
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Identity No
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Certificate No
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Product Name
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15
+                                    }}>
+                                        Submit Date
+                                    </Text>
+                                </View>
+                                <View style={{ width: '70%'}}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.holder_name }
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.holder_dob }
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.holder_identity_no }
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.certificate_no }
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.product_name }
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15
+                                    }}>
+                                        { getInsurace.submit_date }
+                                    </Text>
+                                </View> 
                             </View>
+
+                            <View style={{ marginTop:40 }}>
+                                <Text style={[ ecs.header1]}>
+                                    Insured Person
+                                </Text>
+                            </View>
+
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: '25%' }}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Name
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        Date of Birth
+                                    </Text>
+                                </View>
+                                <View style={{ width: '70%'}}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.holder_dob }
+                                    </Text>
+                                    <Text style={{ 
+                                        fontSize: 15, 
+                                        marginTop:5,
+                                        marginLeft:15,
+                                        marginBottom:5
+                                    }}>
+                                        { getInsurace.holder_name }
+                                    </Text>
+                                </View> 
+                            </View>
+
+                            <View style={{ marginTop:40 }}>
+                                <Text style={[ ecs.header1 ]}>
+                                    Beneficiary
+                                </Text>
+                            </View>
+                            <View style={{ marginLeft:'2%', width:'95%' }}>
+                                <Grid>
+                                    <Col style={[gs.tableHeader]}>
+                                        <Text style={[gs.textCenter]}>No</Text>
+                                    </Col>
+                                    <Col style={[gs.tableHeader]}>
+                                        <Text style={[gs.textCenter]}>Name</Text>
+                                    </Col>
+                                    <Col style={[gs.tableHeader]}>
+                                        <Text style={[gs.textCenter]}>Relationship</Text>
+                                    </Col>
+                                    <Col style={[gs.tableHeader]}>
+                                        <Text style={[gs.textCenter]}>Percentage</Text>
+                                    </Col>
+                                </Grid>
+            
+                                {
+                                    getBeneficiaries.map((row, i) => {
+                                        <Grid>
+                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                                <Text style={[gs.textCenter]}>{ i }</Text>
+                                            </Col>
+                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                                <Text style={[gs.textCenter]}>{ row.fullName }</Text>
+                                            </Col>
+                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                                <Text style={[gs.textCenter]}>{ row.relationship }</Text>
+                                            </Col>
+                                            <Col style={[gs.tableBody, gs.tableEvenClass]}>
+                                                <Text style={[gs.textCenter]}>{ row.percentage }%</Text>
+                                            </Col>
+                                        </Grid>
+                                    })
+                                }
+                            </View>
+
+                        </View>
+                    </View>
+
+                    <View style={{ marginTop: 30}}>
+                        <Text style={{ fontSize: 20 }}>
+                            Benefit
+                        </Text>
+                    </View>
+
+                    <View style={[ecs.certificate]}>
+                        <View style={{ marginBottom: 30 }}>
+                            <Text style={{
+                                fontSize: 15,
+                                marginBottom:5
+                            }}>
+                                - Uang pertanggungan Rp. 45.000.000
+                            </Text>
                         </View>
 
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ width: '82%'}}></View>
+                            <TouchableOpacity
+                                style={[
+                                    gs.btn,
+                                    ecs.certificateBtn
+                                ]}
+                                onPress={this.onPressDashboardScreen}>
+                                <View>
+                                    <Text style={[ecs.entryDataBtnText]}>Back</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
+
                 </View>
             </ScrollView>
         )

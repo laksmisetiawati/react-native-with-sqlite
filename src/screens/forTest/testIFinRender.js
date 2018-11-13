@@ -31,7 +31,7 @@ class ECertificateScreen extends Component {
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         const { navigation } = this.props;
         const occupationClass = navigation.getParam('occupationClass', null);
         const industrySector = navigation.getParam('industrySector', null);
