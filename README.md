@@ -9,7 +9,7 @@ Learning React Native CRUD with SQLite Storage for local database
 
 
 ## Built With ##
-* [SQLite3 Native](https://github.com/andpor/react-native-sqlite-storage) - A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications | version ^3.3.8
+* [SQLite3 Native](https://github.com/andpor/react-native-sqlite-storage) - SQLite3 Native Plugin for React Native for both Android (Classic and Native), iOS and Windows | version ^3.3.8   
 [^](#table-of-contents)   
 
 

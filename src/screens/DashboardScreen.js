@@ -39,42 +39,6 @@ class DashboardScreen extends Component {
     }
 
     async componentDidMount() {
-        // persipan data
-        // await db.transaction((tx) => {
-        //     tx.executeSql(
-        //         "DELETE FROM insurace", 
-        //         [],
-        //         (tx, results) => {
-        //             this.setState({
-        //                 resInsert : results
-        //             })
-        //         }
-        //     )
-        // })
-        // await db.transaction((tx) => {
-        //     tx.executeSql(
-        //         "INSERT INTO product (name) VALUES (?)", 
-        //         ["Ziaga Life Plus"],
-        //         (tx, results) => {
-        //             this.setState({
-        //                 resInsert : results
-        //             })
-        //         }
-        //     )
-        // })
-        // await db.transaction((tx) => {
-        //     tx.executeSql(
-        //         "INSERT INTO nasabah (product_id, title, name, dob, occupation, identity_no, citizen, marrital_status, mail_address, kelurahan, kecamatan, kota, provinsi, mobile_no, account_no, account_name, bank, branch, cif_no, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", 
-        //         ['1', 'Mr', 'Eko Irawan 1', '1990/05/10', '200000', '123412341234', 'citizen', 'marrital_status', 'mail_address', 'Tebet Timur', 'Tebet', 'Jakarta Selatan', 'DKI Jakarta', '0812 181 1221', '000014-01-05-123456', 'Eko Irawan', 'Bank Tabungan Negara', 'Jakarta Harmoni', 'E-123456', '1'],
-        //         (tx, results) => {
-        //             console.log(results);
-        //             console.log("Latest Inserted ID: " + results.insertId);
-        //             this.setState({
-        //                 resInsert : results
-        //             })
-        //         }
-        //     )
-        // })
 
         await db.transaction((tx) => {
             tx.executeSql(
