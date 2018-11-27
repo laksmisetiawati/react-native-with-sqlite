@@ -37,6 +37,33 @@ Run below command to prompts you for passwords for the keystore and key and for 
 keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 ```
 
+Below is the respond from command which is you must fill up   
+
+```cmd
+Enter keystore password:
+Re-enter new password:
+What is your first and last name?
+  [Unknown]:  Laksmi
+What is the name of your organizational unit?
+  [Unknown]:  Personal
+What is the name of your organization?
+  [Unknown]:  Personal
+What is the name of your City or Locality?
+  [Unknown]:  Jakarta
+What is the name of your State or Province?
+  [Unknown]:  DKI Jakarta
+What is the two-letter country code for this unit?
+  [Unknown]:  ID
+Is CN=Laksmi, OU=Unit 1, O=Personal, L=Jakarta, ST=DKI Jakarta, C=ID correct?
+  [no]:  yes
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+        for: CN=Laksmi, OU=Unit 1, O=Personal, L=Jakarta, ST=DKI Jakarta, C=ID
+Enter key password for <mykeyalias>
+        (RETURN if same as keystore password):
+[Storing mykeystore.keystore]
+```
+
 The keystore contains a single key, valid for 10000 days. The alias is a name that you will use later when signing your app, so remember to take note of the alias.   
 
 
@@ -85,11 +112,31 @@ android {
 Run the following in command
 ```cmd
 cd android
-```
-```cmd
 gradlew assembleRelease
 ```
+
 Gradle's assembleRelease will bundle all the JavaScript needed to run your app into the APK.   
+Below is the sample of respond from command   
+```cmd
+Starting a Gradle Daemon, 1 busy and 2 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+> Configure project :app
+WARNING: Configuration 'compile' is obsolete and has been replaced with 'implementation' and 'api'.
+It will be removed at the end of 2018. For more information see: http://d.android.com/r/tools/update-dependency-configurations.html
+
+...
+
+Download https://dl.google.com/dl/android/maven2/com/android/tools/lint/lint-gradle/26.1.4/lint-gradle-26.1.4.pom
+Download https://jcenter.bintray.com/org/codehaus/groovy/groovy-all/2.4.12/groovy-all-2.4.12.pom
+Download https://dl.google.com/dl/android/maven2/com/android/tools/lint/lint/26.1.4/lint-26.1.4.pom
+Download https://dl.google.com/dl/android/maven2/com/android/tools/external/org-jetbrains/uast/26.1.4/uast-26.1.4.pom
+
+...
+
+BUILD SUCCESSFUL in 6m 28s
+56 actionable tasks: 11 executed, 45 up-to-date
+```
+
 The generated APK can be found under `android/app/build/outputs/apk/release/app-release.apk`, and is ready to be distributed.   
 
 
@@ -104,5 +151,11 @@ Please visit [React Native](https://facebook.github.io/react-native/docs/signed-
 
 ## Notes ##
 
-### I Will update README later if I didn't forgot
+```
+compatible with Android version : 5.1 & 6.0   
+SDK API level : 22 & 23   
+Android SDK Tools : 26.1.1   
+```
+
+### I will update README later ~~if I didn't forgot~~
 
