@@ -28,6 +28,10 @@ export default StyleSheet.create({
 		height: 20,
 		padding: 0
 	},
+	addFormBtnText: {
+		textAlign: 'center',
+		lineHeight: 25
+	},
 	box1: {
 		borderBottomWidth: 3,
 		borderColor: 'grey',
@@ -60,21 +64,19 @@ export default StyleSheet.create({
 		marginLeft: '10%',
 		marginRight: '10%'
 	},
-	
-	addFormBtnText: {
-		textAlign: 'center',
-		lineHeight: 25
-	},
+
+
 	addFormBtn: {
 		padding: 2,
 		marginLeft: '1%',
 		width: '39.5%'
 	},
-	inputText: {
-		width: '60%',
-		marginRight: 3,
-		marginBottom: 3,
-		marginTop: 3
+	inputTextSimulate: {
+		width: '60%'
+	},
+	inputTextSimulateSmall: {
+		width: '30%',
+		marginLeft: '1%'
 	},
 	simulasionResult: {
 		borderTopWidth: 3,

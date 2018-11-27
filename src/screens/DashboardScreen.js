@@ -34,27 +34,15 @@ class DashboardScreen extends Component {
         this.state = {
             products: [],
             selected: '',
-            insuraces: [],
-            draft: false
+            insuraces: []
         }
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         // persipan data
         // await db.transaction((tx) => {
         //     tx.executeSql(
         //         "DELETE FROM insurace", 
-        //         [],
-        //         (tx, results) => {
-        //             this.setState({
-        //                 resInsert : results
-        //             })
-        //         }
-        //     )
-        // })
-        // await db.transaction((tx) => {
-        //     tx.executeSql(
-        //         "DELETE FROM nasabah", 
         //         [],
         //         (tx, results) => {
         //             this.setState({
@@ -77,7 +65,7 @@ class DashboardScreen extends Component {
         // await db.transaction((tx) => {
         //     tx.executeSql(
         //         "INSERT INTO nasabah (product_id, title, name, dob, occupation, identity_no, citizen, marrital_status, mail_address, kelurahan, kecamatan, kota, provinsi, mobile_no, account_no, account_name, bank, branch, cif_no, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", 
-        //         ['1', 'Mr', 'Eko Irawan 1', '1980/05/10', '200000', '123412341234', 'citizen', 'marrital_status', 'mail_address', 'Tebet Timur', 'Tebet', 'Jakarta Selatan', 'DKI Jakarta', '0812 181 1221', '000014-01-05-123456', 'Eko Irawan', 'Bank Tabungan Negara', 'Jakarta Harmoni', 'E-123456', '1'],
+        //         ['1', 'Mr', 'Eko Irawan 1', '1990/05/10', '200000', '123412341234', 'citizen', 'marrital_status', 'mail_address', 'Tebet Timur', 'Tebet', 'Jakarta Selatan', 'DKI Jakarta', '0812 181 1221', '000014-01-05-123456', 'Eko Irawan', 'Bank Tabungan Negara', 'Jakarta Harmoni', 'E-123456', '1'],
         //         (tx, results) => {
         //             console.log(results);
         //             console.log("Latest Inserted ID: " + results.insertId);
@@ -174,9 +162,6 @@ class DashboardScreen extends Component {
                 }
             )
         })
-        // const product = navigation.getParam('product', 0);
-        // const healthy = navigation.getParam('healthy', null);
-        // const reason = navigation.getParam('reason', null);
     }
 
 	static navigationOptions = {
@@ -185,23 +170,23 @@ class DashboardScreen extends Component {
 
     onPressSimulateScreen = () => this.props.navigation.navigate('Simulate');
 
-    // submit = async values => {
-    //     Alert.alert('values:', JSON.stringify(values));
-    //     // try {
-    //     //     const { product } = values;
-    //     //     const response = await this.props.login(email, password, otp);
-    //     //     // TODO redirect based on role
-    //     //     if (response) {
-    //     //         if (response.user.privileges.includes('investment:read')) {
-    //     //             this.props.navigation.navigate('InvestorApp');
-    //     //         } else {
-    //     //             this.props.navigation.navigate('BorrowerApp');
-    //     //         }
-    //     //     }
-    //     // } catch (error) {
-    //     //     Alert.alert('Authentication Error', error.data && error.data.message);
-    //     // }
-    // };
+    submit = async values => {
+        Alert.alert('values:', JSON.stringify(values));
+        // try {
+        //     const { product } = values;
+        //     const response = await this.props.login(email, password, otp);
+        //     // TODO redirect based on role
+        //     if (response) {
+        //         if (response.user.privileges.includes('investment:read')) {
+        //             this.props.navigation.navigate('InvestorApp');
+        //         } else {
+        //             this.props.navigation.navigate('BorrowerApp');
+        //         }
+        //     }
+        // } catch (error) {
+        //     Alert.alert('Authentication Error', error.data && error.data.message);
+        // }
+    };
 
     handleFormSubmission = () => {
         // Alert.alert(JSON.stringify(this.state.selected));
@@ -219,102 +204,80 @@ class DashboardScreen extends Component {
 
         console.log(this.state.beneficiaries);
 
-
-        // const { nav } = this.props;
-        // const draft = nav.getParam('draft', false);
-        // if(draft === true) {
-        //     console.log("drft TRUE");
-        //     const nasabahId = nav.getParam('nasabahId', 0);
-        //     await db.transaction((tx) => {
-        //         tx.executeSql(
-        //             "SELECT * FROM nasabah WHERE id=?", 
-        //             [nasabahId],
-        //             (tx, results) => {
-        //                 const row  = results.rows.item(0);
-        //                 this.setState({
-        //                     getNasabah : row
-        //                 })
-        //             }
-        //         )
-        //     })
-        // } else {
-        //     console.log("drft FALSE");
-        // }
-
         return (
-            <ScrollView style={[ gs.body, gs.flex1 ]}>
-                <View style={[ gs.container ]}>
-                    
-                    <View style={[ ds.addForm ]}>
-                        <View style={[ gs.flexDirectionRow ]}>
-                            <View style={[ gs.wrapAddFormDropDown, ds.wrapAddFormDropDown]}>
-                                <Picker name="product"
-                                    selectedValue={ this.state.selected }
-                                    style={[ gs.dropDown]}
-                                    onValueChange={(itemValue, itemIndex) => this.setState({selected: itemValue})}
-                                >
-                                    <Picker.Item label="Select" value="0" />
-                                    {
-                                        products.map((item, index) => {
-                                            return (<Picker.Item key={index} label={item.name} value={item.id} />) 
-                                        })
-                                    }
-                                </Picker>
-                            </View>
-                            <TouchableOpacity
-                                style={[
-                                    gs.btn,
-                                    ds.addFormBtn
-                                ]}
-                                // onPress={handleSubmit(this.submit)}
-                                onPress={this.handleFormSubmission}
-                                >
-                                <View>
-                                    <Text style={[ds.addFormBtnText]}>New</Text>
+            <ScrollView>
+                <View style={[gs.body]}>
+                    <View style={[gs.container]}>
+                        
+                        <View style={[ds.addForm]}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={[ gs.wrapAddFormDropDown, ds.wrapAddFormDropDown]}>
+                                    <Picker name="product"
+                                        selectedValue={ this.state.selected }
+                                        style={[ gs.dropDown]}
+                                        onValueChange={(itemValue, itemIndex) => this.setState({selected: itemValue})}
+                                    >
+                                        <Picker.Item label="Select" value="0" />
+                                        {
+                                            products.map((item, index) => {
+                                                return (<Picker.Item key={index} label={item.name} value={item.id} />) 
+                                            })
+                                        }
+                                    </Picker>
                                 </View>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-
-                    <View style={[ds.box1]}>
-                        <View style={[ gs.flexDirectionRow ]}>
-                            <View style={[ds.box1List]}>
-                                <Text style={[ds.box1Number]}>{ this.state.totalSuccess }</Text>
-                                <Text style={[ds.box1Text]}>Success</Text>
-                            </View>
-                            <View style={[ds.box1List, ds.box1Center]}>
-                                <Text style={[ds.box1Number]}>{ this.state.totalCancel }</Text>
-                                <Text style={[ds.box1Text]}>Cancel</Text>
-                            </View>
-                            <View style={[ds.box1List]}>
-                                <Text style={[ds.box1Number]}>{ this.state.totalDraft }</Text>
-                                <Text style={[ds.box1Text]}>Draft</Text>
+                                <TouchableOpacity
+                                    style={[
+                                        gs.btn,
+                                        ds.addFormBtn
+                                    ]}
+                                    // onPress={handleSubmit(this.submit)}
+                                    onPress={this.handleFormSubmission}
+                                    >
+                                    <View>
+                                        <Text style={[ds.addFormBtnText]}>New</Text>
+                                    </View>
+                                </TouchableOpacity>
                             </View>
                         </View>
-                    </View>
 
-                    <View>
-                        <Grid style={{ marginTop: 40 }}>
-                            <Col style={[gs.tableHeader]}>
-                                <Text>No</Text>
-                            </Col>
-                            <Col style={[gs.tableHeader]}>
-                                <Text>Date</Text>
-                            </Col>
-                            <Col style={[gs.tableHeader, ds.tableList1Header3]}>
-                                <Text>Certificate No</Text>
-                            </Col>
-                            <Col style={[gs.tableHeader]}>
-                                <Text>Name</Text>
-                            </Col>
-                            <Col style={[gs.tableHeader]}>
-                                <Text>Status</Text>
-                            </Col>
-                        </Grid>
-                    </View>
-                    
-                    {
-                        insuraces.length > 0 ? (
+                        <View style={[ds.box1]}>
+                            <View style={[ gs.flexDirectionRow ]}>
+                                <View style={[ds.box1List]}>
+                                    <Text style={[ds.box1Number]}>{ this.state.totalSuccess }</Text>
+                                    <Text style={[ds.box1Text]}>Success</Text>
+                                </View>
+                                <View style={[ds.box1List, ds.box1Center]}>
+                                    <Text style={[ds.box1Number]}>{ this.state.totalCancel }</Text>
+                                    <Text style={[ds.box1Text]}>Cancel</Text>
+                                </View>
+                                <View style={[ds.box1List]}>
+                                    <Text style={[ds.box1Number]}>{ this.state.totalDraft }</Text>
+                                    <Text style={[ds.box1Text]}>Draft</Text>
+                                </View>
+                            </View>
+                        </View>
+
+                        <View>
+                            <Grid style={{ marginTop: 40 }}>
+                                <Col style={[gs.tableHeader]}>
+                                    <Text>No</Text>
+                                </Col>
+                                <Col style={[gs.tableHeader]}>
+                                    <Text>Date</Text>
+                                </Col>
+                                <Col style={[gs.tableHeader, ds.tableList1Header3]}>
+                                    <Text>Certificate No</Text>
+                                </Col>
+                                <Col style={[gs.tableHeader]}>
+                                    <Text>Name</Text>
+                                </Col>
+                                <Col style={[gs.tableHeader]}>
+                                    <Text>Status</Text>
+                                </Col>
+                            </Grid>
+                        </View>
+                        
+                        {
                             insuraces.map((row, i) => {
                                 let tableClass;
                                 if ( i % 2 == 0) {
@@ -357,13 +320,9 @@ class DashboardScreen extends Component {
                                     </View>
                                 ) 
                             })
-                        ) : (
-                            <View style={{ width: '100%', paddingTop: 10, paddingBottom: 10}}>
-                                <Text style={{ textAlign: 'center' }}>No Data</Text>
-                            </View>
-                        )
-                    }
+                        }
 
+                    </View>
                 </View>
             </ScrollView>
         )

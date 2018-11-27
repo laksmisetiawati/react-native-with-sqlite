@@ -4,7 +4,8 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 	
 	wrapAddFormDropDown: {
-		width: '100%'
+		width: '100%',
+		marginLeft: '0.5%'
 	},
 	addFormDropDown: {
 		borderWidth: 0,
@@ -19,6 +20,9 @@ export default StyleSheet.create({
 		padding: 2,
 		marginLeft: '1%',
 		width: '39.5%'
+	},
+	inputText: {
+		
 	},
 	inputTextSimulate: {
 		width: '60%'
@@ -38,8 +42,7 @@ export default StyleSheet.create({
 		width: '17%'
 	},
 	entryDataDetailInputTextArea: {
-		width: '100%',
-		marginTop: 3
+		width: '100%'
 	}
 
 });

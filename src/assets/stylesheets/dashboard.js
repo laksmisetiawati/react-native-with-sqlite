@@ -16,15 +16,17 @@ export default StyleSheet.create({
 		marginTop: 40
 	},
 	wrapAddFormDropDown: {
-		width: '80%',
+		width: '60%',
+	},
+	addFormDropDown: {
+		borderWidth: 0,
+		height: 20,
+		padding: 0
 	},
 	addFormBtn: {
 		width: '20%',
-		// height: 40,
-		marginLeft: '1%',
-		marginTop: 0,
-		paddingTop: 5,
-		paddingBottom: 5
+		height: 30,
+		marginLeft: '1%'
 	},
 	addFormBtnText: {
 		textAlign: 'center',
