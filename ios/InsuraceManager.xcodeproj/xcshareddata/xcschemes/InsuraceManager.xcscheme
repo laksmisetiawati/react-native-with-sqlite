@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "project2.app"
-               BlueprintName = "project2"
-               ReferencedContainer = "container:project2.xcodeproj">
+               BuildableName = "InsuraceManager.app"
+               BlueprintName = "InsuraceManager"
+               ReferencedContainer = "container:InsuraceManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "project2Tests.xctest"
-               BlueprintName = "project2Tests"
-               ReferencedContainer = "container:project2.xcodeproj">
+               BuildableName = "InsuraceManagerTests.xctest"
+               BlueprintName = "InsuraceManagerTests"
+               ReferencedContainer = "container:InsuraceManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "project2Tests.xctest"
-               BlueprintName = "project2Tests"
-               ReferencedContainer = "container:project2.xcodeproj">
+               BuildableName = "InsuraceManagerTests.xctest"
+               BlueprintName = "InsuraceManagerTests"
+               ReferencedContainer = "container:InsuraceManager.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "project2.app"
-            BlueprintName = "project2"
-            ReferencedContainer = "container:project2.xcodeproj">
+            BuildableName = "InsuraceManager.app"
+            BlueprintName = "InsuraceManager"
+            ReferencedContainer = "container:InsuraceManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "project2.app"
-            BlueprintName = "project2"
-            ReferencedContainer = "container:project2.xcodeproj">
+            BuildableName = "InsuraceManager.app"
+            BlueprintName = "InsuraceManager"
+            ReferencedContainer = "container:InsuraceManager.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "project2.app"
-            BlueprintName = "project2"
-            ReferencedContainer = "container:project2.xcodeproj">
+            BuildableName = "InsuraceManager.app"
+            BlueprintName = "InsuraceManager"
+            ReferencedContainer = "container:InsuraceManager.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

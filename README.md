@@ -1,13 +1,15 @@
-Learning React Native CRUD with SQLite
+Learning React Native CRUD with SQLite Storage for local database
 
 
 ## Table of Contents
 * [Built With](#built-with)
+* [Working With SQLite3 Native](#working-with-sqlite3-native)
 * [Generating Signed APK](#generating-signed-apk)
 
 
 
 ## Built With ##
+* [SQLite3 Native](https://github.com/andpor/react-native-sqlite-storage) - A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications | version ^3.3.8
 [^](#table-of-contents)   
 
 
@@ -16,6 +18,12 @@ Learning React Native CRUD with SQLite
 
 ### Starting   
 
+[^](#table-of-contents)   
+
+
+
+### Working With SQLite3 Native
+[Source](https://github.com/andpor/react-native-sqlite-storage#how-to-use-ios)   
 [^](#table-of-contents)   
 
 
@@ -59,9 +67,9 @@ Is CN=Laksmi, OU=Unit 1, O=Personal, L=Jakarta, ST=DKI Jakarta, C=ID correct?
 
 Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
         for: CN=Laksmi, OU=Unit 1, O=Personal, L=Jakarta, ST=DKI Jakarta, C=ID
-Enter key password for <mykeyalias>
+Enter key password for <my-key-alias>
         (RETURN if same as keystore password):
-[Storing mykeystore.keystore]
+[Storing my-release-key.keystore]
 ```
 
 The keystore contains a single key, valid for 10000 days. The alias is a name that you will use later when signing your app, so remember to take note of the alias.   
@@ -156,6 +164,8 @@ compatible with Android version : 5.1 & 6.0
 SDK API level : 22 & 23   
 Android SDK Tools : 26.1.1   
 ```   
+
+> Tutorial Rename Project : https://www.youtube.com/watch?v=lQN9r6sWDCY
 
 
 

@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "project2-tvOS.app"
-               BlueprintName = "project2-tvOS"
-               ReferencedContainer = "container:project2.xcodeproj">
+               BuildableName = "InsuraceManager-tvOS.app"
+               BlueprintName = "InsuraceManager-tvOS"
+               ReferencedContainer = "container:InsuraceManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "project2-tvOSTests.xctest"
-               BlueprintName = "project2-tvOSTests"
-               ReferencedContainer = "container:project2.xcodeproj">
+               BuildableName = "InsuraceManager-tvOSTests.xctest"
+               BlueprintName = "InsuraceManager-tvOSTests"
+               ReferencedContainer = "container:InsuraceManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "project2-tvOSTests.xctest"
-               BlueprintName = "project2-tvOSTests"
-               ReferencedContainer = "container:project2.xcodeproj">
+               BuildableName = "InsuraceManager-tvOSTests.xctest"
+               BlueprintName = "InsuraceManager-tvOSTests"
+               ReferencedContainer = "container:InsuraceManager.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "project2-tvOS.app"
-            BlueprintName = "project2-tvOS"
-            ReferencedContainer = "container:project2.xcodeproj">
+            BuildableName = "InsuraceManager-tvOS.app"
+            BlueprintName = "InsuraceManager-tvOS"
+            ReferencedContainer = "container:InsuraceManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "project2-tvOS.app"
-            BlueprintName = "project2-tvOS"
-            ReferencedContainer = "container:project2.xcodeproj">
+            BuildableName = "InsuraceManager-tvOS.app"
+            BlueprintName = "InsuraceManager-tvOS"
+            ReferencedContainer = "container:InsuraceManager.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "project2-tvOS.app"
-            BlueprintName = "project2-tvOS"
-            ReferencedContainer = "container:project2.xcodeproj">
+            BuildableName = "InsuraceManager-tvOS.app"
+            BlueprintName = "InsuraceManager-tvOS"
+            ReferencedContainer = "container:InsuraceManager.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
