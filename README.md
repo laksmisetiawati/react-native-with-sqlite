@@ -140,7 +140,7 @@ BUILD SUCCESSFUL in 6m 28s
 The generated APK can be found under `android/app/build/outputs/apk/release/app-release.apk`, and is ready to be distributed.   
 
 
-Please visit [React Native](https://facebook.github.io/react-native/docs/signed-apk-android)'s site to read their generating APK documentations if you macOS. Also, mostly I was just copy-paste their documentations.   
+Please visit [React Native](https://facebook.github.io/react-native/docs/signed-apk-android)'s site to read their generating APK documentations if you use macOS. Also, mostly I was just copy-paste their documentations.   
 [^](#table-of-contents)   
 
 
@@ -155,7 +155,13 @@ Please visit [React Native](https://facebook.github.io/react-native/docs/signed-
 compatible with Android version : 5.1 & 6.0   
 SDK API level : 22 & 23   
 Android SDK Tools : 26.1.1   
-```
+```   
 
-### I will update README later ~~if I didn't forgot~~
+
+
+---
+
+
+
+> I will update README later ~~if I didn't forgot~~
 
